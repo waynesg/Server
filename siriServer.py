@@ -44,8 +44,8 @@ reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
 class HandleConnection(ssl_dispatcher):
-    __not_recognized =  {"de-DE": u"Entschuldigung, ich verstehe \"{0}\" nicht.", "en-US": u"Sorry I don't understand {0}", "fr-FR": u"Désolé je ne comprends pas ce que \"{0}\" veut dire."}
-    __websearch =  {"de-DE": u"Websuche", "en-US": u"Websearch", "fr-FR": u"Rechercher sur le Web"}
+    __not_recognized =  {"de-DE": u"Entschuldigung, ich verstehe \"{0}\" nicht.", "en-US": u"Sorry I don't understand {0}", "zh-CN": u"对不起，我不明白什么是 {0}", "fr-FR": u"Désolé je ne comprends pas ce que \"{0}\" veut dire."}
+    __websearch =  {"de-DE": u"Websuche", "en-US": u"Websearch", "zh-CN": u"网页搜索", "fr-FR": u"Rechercher sur le Web"}
     def __init__(self, conn):
         asyncore.dispatcher_with_send.__init__(self, conn)
         
@@ -348,7 +348,7 @@ class HandleConnection(ssl_dispatcher):
                         objProperties = reqObject['properties'] 
                         self.assistant.censorSpeech = objProperties['censorSpeech']
                         self.assistant.timeZoneId = objProperties['timeZoneId']
-                        self.assistant.language = objProperties['language']                     
+                        self.assistant.language = "zh-CN"                     
                         #fix if there is no language or a bug in siri, spire
                         
                         if self.assistant.language=='':
